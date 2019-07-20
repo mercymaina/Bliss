@@ -1,0 +1,34 @@
+<h1> Restaurant Menu</h1>
+<div></div>
+<form [formGroup]="menuForm" (ngSubmit)="submit()">
+  <div *ngFor="let item of data; " >
+<!--    saladlist name-->
+    <input type="checkbox" formControlName="mainTitle" (click)="onSelected(item.name)">
+    <label for="mainTitle">{{item.name}}</label>
+    <div id="{{item.name}}" class="hide-data" >
+    <div *ngFor="let choice of item.choices">
+      &nbsp; &nbsp;
+<!--      choices list-->
+      <input type="checkbox" >
+    <label for="">{{choice.name}}</label></div>
+      <div class="related">
+       <p >You might also want:</p>
+        <div *ngFor="let related of item.related">
+          &nbsp; &nbsp;
+<!--          related choices-->
+          <input type="checkbox" (click)="onSelected(related.name)">
+          <label for="">{{related.name}}</label>
+        <div id="{{related.name}}" class="hide-data" >
+<div *ngFor="let i of related.choices">
+  &nbsp; &nbsp; &nbsp; &nbsp;
+  <input type="checkbox">
+  <label for="">{{i.name}}</label>
+</div>
+        </div>
+      </div>
+
+     </div>
+  </div>
+  </div>
+
+</form>
